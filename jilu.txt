@@ -1,0 +1,13 @@
+urls.py:
+from django.conf import settings
+from django.conf.urls.static import static
+
++ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+settings.py
+MEDIA_URL = '/sclm/'
+MEDIA_ROOT = os.path.join(BASE_DIR , '/sclm/')
+
+
+

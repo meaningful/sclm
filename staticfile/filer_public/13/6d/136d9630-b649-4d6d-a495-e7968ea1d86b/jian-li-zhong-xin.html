@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8" http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
+    <title>简历中心</title>
+    <!--begin 旧版以及公共css文件-->
+    <link type="text/css" rel="stylesheet" href="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/reset_002.css">
+    <link type="text/css" rel="stylesheet" href="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/jquery.css">
+    <link type="text/css" rel="stylesheet" href="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/apply.css">
+    <link type="text/css" rel="stylesheet" href="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/jobsearch.css">
+    <link type="text/css" rel="stylesheet" href="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/resume_preview.css">
+    <link type="text/css" rel="stylesheet" href="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/feedback-tip.css">
+    <link type="text/css" rel="stylesheet" href="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/feedback_openpopup.css">
+    <link type="text/css" rel="stylesheet" href="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/360pop.css">
+    <!--end 旧版以及公共css文件-->
+    <!-- begin新版添加的css文件-->
+    <link type="text/css" rel="stylesheet" href="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/resumeCenter.css">
+    <link type="text/css" rel="stylesheet" href="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/resumeCenterDialog.css">
+    <!--end 新版添加的css文件-->
+    <!--begin jquery-->
+
+    <!--end jquery-->
+<style type="text/css">#kf-content-div a,
+#kf-content-div p {
+	border: 0px !important;
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
+#kf-wiki-div a:hover,
+#kf-content-div a:focus {
+	text-decoration: none !important;
+}
+
+#kf-wiki-div a {
+	text-decoration: none !important;
+	color: #0645AD !important;
+	background: none repeat scroll 0% 0% transparent !important;
+}
+
+#kf-wiki-div dt {
+	margin-bottom: 0.1em !important;
+	font-weight: bold !important;
+}
+
+#kf-wiki-div dd {
+	margin-left: 1.6em !important;
+	margin-bottom: 0.1em !important;
+}
+
+/**************/
+#kf-my-add-btn {
+	display: none;
+	height: 18px;
+	width: 18px;
+	position: fixed;
+	z-index: 2147483647;
+	line-height: 18px;
+	text-decoration: none;
+	font: bold 12px/25px Arial;
+	color: rgba(62, 87, 6, 0.53);
+	background: -moz-linear-gradient(center top, rgba(165, 205, 78, 1) 0%, rgba(107, 143, 26, 1) 100%);
+	opacity: 0.55;
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, .22);
+	border-radius: 18px;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px rgba(255, 255, 255, .44);
+	transition: all 0.15s ease;
+}
+
+#kf-my-add-btn {
+	color: rgba(62, 87, 6, 0.53);
+	opacity: 0.55;
+}
+
+#kf-my-add-btn:hover {
+	color: rgba(62, 87, 6, 1);
+	opacity: 1;
+}
+
+#kf-add-loading-img {
+	display: none;
+	height: 24px;
+	width: 24px;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	z-index: 2147483647;
+	border-radius: 24px;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.29), 1px 1px 1px rgba(255, 255, 255, 0.24) inset;
+}
+
+#kf-content-div {
+	opacity: 0;
+	display: none;
+	width: 320px;
+	position: fixed;
+	right: 20px;
+	bottom: -190px;
+	z-index: 2147483647;
+	font: normal 12px/25px Arial, sans-serif;
+	color: #222;
+	background: transparent;
+}
+
+#kf-top-div {
+	height: 40px;
+	width: 320px;
+	background: rgba(0, 0, 0, .05);
+	border-radius: 20px 20px 0px 0px;
+	line-height: 40px;
+	text-align: center;
+}
+
+#kf-wiki-tab {
+	width: 160px;
+	color: rgba(255, 255, 255, .88);
+	text-decoration: none;
+	background: rgba(0, 152, 249, .6);
+	float: left;
+	font-size: 1em;
+	border-radius: 20px 20px 0px 0px;
+}
+
+#kf-translator-tab {
+	width: 160px;
+	color: rgba(0, 0, 0, 0.25);
+	text-decoration: none;
+	background: transparent;
+	font-size: 1em;
+	float: left;
+	border-radius: 20px 20px 0px 0px;
+}
+
+#kf-frame-div {
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.33);
+	text-align: left;
+}
+
+#kf-trans-div{
+	font-weight: bold;width:300px;height:auto;background:rgba(233, 233, 233, 1);opacity:.8;padding:10px;max-height:190px;overflow:auto;
+}
+
+#kf-wiki-div {
+	width: 300px;
+	max-height: 190px;
+	padding: 10px;
+	background: #E9E9E9;
+	opacity: 0.8;
+	border: 0px;
+	overflow: auto;
+}
+
+/*******/
+.tipso_bubble,.tipso_bubble>.tipso_arrow{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.tipso_bubble{position:absolute;text-align:center;border-radius:6px;z-index:9999;padding:10px}.tipso_style{cursor:help;border-bottom:1px dotted}.tipso_bubble>.tipso_arrow{position:absolute;width:0;height:0;border:8px solid;pointer-events:none}.tipso_bubble.top>.tipso_arrow{border-color:#000 transparent transparent;top:100%;left:50%;margin-left:-8px}.tipso_bubble.bottom>.tipso_arrow{border-color:transparent transparent #000;bottom:100%;left:50%;margin-left:-8px}.tipso_bubble.left>.tipso_arrow{border-color:transparent transparent transparent #000;top:50%;left:100%;margin-top:-8px}.tipso_bubble.right>.tipso_arrow{border-color:transparent #000 transparent transparent;top:50%;right:100%;margin-top:-8px}</style></head>
+<body>
+<link type="text/css" rel="stylesheet" href="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/resumeHeadFooter.css">
+<div class="top">
+    <div class="top_con clearfix">
+            <p style="float: left; font-size: 14px; color: #90a4b7; height: 38px; line-height: 40px;display:none;"><span style="font-weight: bold">公告：</span>为了提供更好的服务，智联招聘将于12月26日 21:00-24:00进行系统优化升级，届时部分功能可能会受到影响，请见谅。</p>
+       
+        <ul class="fr">
+            <li class="people">
+                <i onmousedown="dyweTrackEvent('luMYinfo','UserCenterLst')" class="icon icon_people"></i>
+                <i class="icon icon_triangle"></i>
+
+                <ul class="acc_hover">
+                    <span class="icon top_sj icon_sqt" style=""></span>
+                    <li><a href="http://i.zhaopin.com/Resume/BaseInfo/Edit/148853243/JR333285330R90250001000/1/1" target="_blank">修改个人信息</a></li>
+                    <li><a href="http://i.zhaopin.com/ResumeCenter/AccountSet/Index" target="_blank">账号设置</a></li>
+                    <li><a href="http://i.zhaopin.com/ResumeCenter/MyCollect/Index">我的收藏</a></li>
+                    <li><a href="http://i.zhaopin.com/PositionSearcher/Searcher/JobSearch">我的订阅</a></li>
+                    <li><a href="http://article.zhaopin.com/payquery/index.do">薪酬查询</a></li>
+                    <li><a href="http://passport.zhaopin.com/account/logout">退出</a></li>
+                </ul>
+            </li>
+            <li>
+                <a onclick="recordOutboundLink(this,'addnewlink','mobilejob')" href="http://images.zhaopin.com/2012/other/mobile/mobile.html" target="_blank">
+                    <i class="icon icon_phone"></i>
+                    <span>手机求职</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- top结束 -->
+<div class="acc_nav clearfix">
+    <div class="nav_con clearfix">
+        <div class="nav_img fl">
+            <img src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/img.png">
+        </div>
+        <ul class="nav_link fl">
+            <li><a href="http://www.zhaopin.com/">首&nbsp;&nbsp;页</a></li>
+            <li><a href="http://i.zhaopin.com/" class="cur current">我的智联</a></li>
+            <li><a href="http://sou.zhaopin.com/">职位搜索</a></li>
+            <li><a href="http://student.zhaopin.com/">校园招聘</a></li>
+            <li><a href="http://www.highpin.cn/zhiwei/?fromType=12&amp;utm_source=zpsygdad&amp;utm_medium=cpc&amp;utm_content=zpsygdadtextlink&amp;utm_campaign=zpsygdadanalytics&amp;utm_term=onlinepromo_201402">高端招聘</a></li>
+            <li><a onclick="recordOutboundLink(this,'addnewlink','educchannal')" href="http://edu.zhaopin.com/">智联教育</a></li>
+            <li><a href="http://www.zhaopin.com/jobseeker/index_industry.html">行业求职</a></li>
+            <li><a href="http://article.zhaopin.com/">求职指导</a></li>
+            <li><a href="http://ceping.zhaopin.com/">智联测评</a></li>
+        </ul>
+    </div>
+
+</div>
+<!-- nav结束 -->
+    <input value="" id="NoticeCookie" type="hidden">
+    <input value="0" id="NoReadInvitedCount" type="hidden">
+
+    <div class="wrap">
+        <div class="content myData">
+            <div class="basicData">
+                <div class="basicDataCon1">
+                    <p class="basName">刘杰</p>
+                    <span>男</span><span>27岁</span><a href="http://i.zhaopin.com/Resume/BaseInfo/Edit/148853243/JR333285330R90250001000/1/1" onclick="dyweTrackEvent('luMYinfo','clickEdit')" class="amendBtn"></a>
+                </div>
+                <!--/.basicDataCon1-->
+                <div class="basicDataCon2">
+                        <p> 武汉-武昌区</p>
+
+                    <p>手机：13647236400</p>
+                    <p>邮箱：liu_jie_1@126.com</p>
+                </div>
+                <!--/.basicDataCon2-->
+                    <div class="basicDataCon3">
+                        <a class="basCole" onclick="dyweTrackEvent('luMYinfo','clickFeedback')" href="http://i.zhaopin.com/PositionRecord/jobpostrecord/Index">
+                            <p class="coleNum">0</p>
+                            <span>申请记录</span>
+                            <i style="display: none;">0</i>
+                        </a>
+                        <!--/.basCole-->
+                        <a onclick="dyweTrackEvent('luMYinfo','clickInvite')" href="http://i.zhaopin.com/PositionInvited/jobInvited/Index" class="basCole tr">
+                            <p class="coleNum">0</p>
+                            <span>职位邀请</span>
+                            <i style="display: none;">0</i>
+                        </a>
+                        <!--/.basCole-->
+                        <a onclick="dyweTrackEvent('luMYinfo','clickHRSerch')" href="http://i.zhaopin.com/ResumeCenter/MyCenter/MsgCenter" class="basCole">
+                            <p class="coleNum">21</p>
+                            <span>HR通知</span>
+                            <i>21</i>
+                        </a>
+                        <!--/.basCole-->
+                    </div>
+                    <!--/.basicDataCon3-->
+                <div class="clear"></div>
+            </div>
+            <!--/.basicData-->
+            <div class="myResume">
+                <i class="dec_left"></i>
+                <i class="dec_right"></i>
+                <div class="container">
+                    <div style="overflow: hidden; display: block;" id="slides">
+                            <div style="overflow: hidden; position: relative; width: 500px; height: 330px;" class="slidesjs-container"><div style="position: relative; left: 0px; width: 500px; height: 330px;" class="slidesjs-control"><div slidesjs-index="0" style="position: absolute; top: 0px; left: 0px; width: 100%; z-index: 10;" class="imgCole slidesjs-slide">
+                                <div class="zhImgCole" style="display:block">
+                                <h3>
+                                    <span>我的简历</span>
+                                    <input class="addResume" type="button">
+                                    <div class="addRes">
+                                        <a href="http://i.zhaopin.com/resume/Standard/add" onclick="dyweTrackEvent('luMYinfo','clickeAddResume')" class="">创建标准简历</a>
+                                        <a href="http://i.zhaopin.com/resume/AttachResume/add" onclick="dyweTrackEvent('luMYinfo','clickeAddAttach')" class="">创建附件简历</a>
+                                        <i></i>
+                                    </div>
+                                        <div class="setBtn setKing">默认简历</div>
+                                </h3>
+                                <div class="myphoto">
+                                    <div class="pic">
+                                        <img onerror="this.style.display='none'" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/F2CF33CCE89C4E579D4B9E298A65330E_002.jpg" alt="">
+                                        <a style="display: none;" onclick="dyweTrackEvent('luMYinfo','clickAvatar')" href="http://my.zhaopin.com/MYZHAOPIN/editatta_edit.asp?Ext_ID=JR333285330R90250001000&amp;Language_ID=1&amp;Resume_ID=148853243&amp;Version_Number=1" title="修改头像" class="picLink1">
+                                            修改头像
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="myTxt" data-ext_id="JR333285330R90250001000" data-resume_id="148853243" data-version_number="1" data-language_id="1">
+                                    <div class="myTxtTitle">
+                                        <div class="languageTiggle">
+                                        <input value="中文" data-status="1" data-iscomplent="1" type="button">
+                                        <ul>
+                                            <li>英文</li>
+                                        </ul>
+                                        </div>
+                                        <p class="icon_ch" title="简历">简历</p>
+                                        <!--中文简历类名 icon_ch  英文简历类名  icon_en-->
+                                        <i>2016-03-30</i>
+                                    </div>
+                                    <div class="percent">
+                                        <p><em style="width: 90%;">进度条</em></p>
+                                        <span class="percentNum">90%</span>
+                                    </div>
+                                    <div class="openResume">
+                                        <input value="公开简历" type="button">
+                                        <ul>
+                                            <li data-value="2">公开简历</li>
+                                            <li data-value="1">保密简历</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--/.myTxt-->
+                                <div class="myLink">
+                                    <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickeRefresh')" class="myLinkA linkRefresh" url="Home/IsRefreshResume?&amp;resumeId=148853243&amp;extId=JR333285330R90250001000&amp;version=1&amp;language=1"><i></i>刷新</a>
+                                    <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickView')" class="myLinkA linkPreview" data-resumenumber="JR333285330R90250001000" data-resumeid="148853243" data-version="1" data-language="1"><i></i>预览</a>
+                                    <a onclick="dyweTrackEvent('luMYinfo','clickEdit')" href="http://my.zhaopin.com/MYZHAOPIN/resume_preview_edit.asp?ext_id=JR333285330R90250001000&amp;resume_id=148853243&amp;Version_Number=1&amp;language_id=1" target="_blank" class="myLinkA linkAmend"><i></i>修改</a>
+                                    <a onclick="dyweTrackEvent('luMYinfo','clickAutoSend')" href="javascript:;" class="myLinkA linkArrive" ext_id="JR333285330R90250001000&amp;resume_id=148853243&amp;Version_Number=1&amp;language_id=1"><i></i>委托投递</a>
+                                    <a onclick="dyweTrackEvent('luMYinfo','clickBlackLst')" href="http://i.zhaopin.com/ResumeCenter/AccountSet/Index?resume_num=JR333285330R90250001000&amp;version=1" class="myLinkA linkShield" target="_blank"><i></i>企业屏蔽</a>
+                                    <div class="myLinkA linkOperate">
+                                        <i></i>更多操作<input onclick="dyweTrackEvent('luMYinfo', 'clickMore')" value="" type="button">
+                                        <div class="moreOperate">
+                                            <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickExport')" class="deputeDeliver">导出</a>
+                                            <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickCoverLetter')" class="coverLetter">求职信</a>
+                                            <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickDeleteResume')" class="delateRem">删除简历</a>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/.myLink-->
+                            </div>
+                         
+                                <div class="enimgCole" style="display:none">
+                                <h3>
+                                    <span>我的简历</span>
+                                    <input class="addResume" type="button">
+                                    <div class="addRes">
+                                        <a href="http://i.zhaopin.com/resume/Standard/add" onclick="dyweTrackEvent('luMYinfo','clickeAddResume')" class="">创建标准简历</a>
+                                        <a href="http://i.zhaopin.com/resume/AttachResume/add" onclick="dyweTrackEvent('luMYinfo','clickeAddAttach')" class="">创建附件简历</a>
+                                        <i></i>
+                                    </div>
+                                        <div class="setBtn setKing">默认简历</div>
+                                </h3>
+                                <div class="myphoto">
+                                    <div class="pic">
+                                        <img onerror="this.style.display='none'" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/F2CF33CCE89C4E579D4B9E298A65330E_002.jpg" alt="">
+                                        <a style="display: none;" onclick="dyweTrackEvent('luMYinfo','clickAvatar')" href="http://my.zhaopin.com/MYZHAOPIN/editatta_edit.asp?Ext_ID=JR333285330R90250001000&amp;Language_ID=2&amp;Resume_ID=148853243&amp;Version_Number=1" title="修改头像" class="picLink1">
+                                            修改头像
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="myTxt" data-ext_id="JR333285330R90250001000" data-resume_id="148853243" data-version_number="1" data-language_id="2">
+                                    <div class="myTxtTitle">
+                                        <div class="languageTiggle">
+                                        <input value="英文" data-status="2" data-iscomplent="1" type="button">
+                                        <ul>
+                                            <li>中文</li>
+                                        </ul>
+                                        </div>
+                                        <p class="icon_en" title="简历">简历</p>
+                                        <!--中文简历类名 icon_ch  英文简历类名  icon_en-->
+                                        <i>2016-03-30</i>
+                                    </div>
+                                    <div class="percent">
+                                        <p><em style="width: 0%;">进度条</em></p>
+                                        <span class="percentNum">0%</span>
+                                    </div>
+                                    <div class="openResume">
+                                        <input value="公开简历" type="button">
+                                        <ul>
+                                            <li data-value="2">公开简历</li>
+                                            <li data-value="1">保密简历</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--/.myTxt-->
+                                <div class="myLink">
+                                    <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickeRefresh')" class="myLinkA linkRefresh" url="Home/IsRefreshResume?&amp;resumeId=148853243&amp;extId=JR333285330R90250001000&amp;version=1&amp;language_id=2"><i></i>刷新</a>
+                                    <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickView')" class="myLinkA linkPreview" data-resumenumber="JR333285330R90250001000" data-resumeid="148853243" data-version="1" data-language="2"><i></i>预览</a>
+
+                                        <a onclick="dyweTrackEvent('luMYinfo','clickEdit')" href="http://my.zhaopin.com/MYZHAOPIN/resume_add_language.asp?ext_id=JR333285330R90250001000&amp;resume_id=148853243&amp;Version_Number=1&amp;language_id=2" target="_blank" class="myLinkA linkAmend"><i></i>修改</a>
+                                    <a onclick="dyweTrackEvent('luMYinfo','clickAutoSend')" href="javascript:;" class="myLinkA linkArrive" ext_id="JR333285330R90250001000&amp;resume_id=148853243&amp;Version_Number=1&amp;language_id=1"><i></i>委托投递</a>
+                                    <a onclick="dyweTrackEvent('luMYinfo','clickBlackLst')" href="http://i.zhaopin.com/ResumeCenter/AccountSet/Index?resume_num=JR333285330R90250001000&amp;version=1" class="myLinkA linkShield" target="_blank"><i></i>企业屏蔽</a>
+                                    <div class="myLinkA linkOperate">
+                                        <i></i>更多操作<input onclick="dyweTrackEvent('luMYinfo', 'clickMore')" value="" type="button">
+                                        <div class="moreOperate">
+                                            <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickExport')" class="deputeDeliver">导出</a>
+                                            <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickCoverLetter')" class="coverLetter">求职信</a>
+                                            <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickDeleteResume')" class="delateRem">删除简历</a>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/.myLink-->
+                            </div>
+                            </div><div slidesjs-index="1" style="position: absolute; top: 0px; left: 0px; width: 100%; z-index: 0; display: none;" class="imgCole slidesjs-slide">
+                                <div class="zhImgCole" style="display:block">
+                                <h3>
+                                    <span>我的简历</span>
+                                    <input class="addResume" type="button">
+                                    <div class="addRes">
+                                        <a href="http://i.zhaopin.com/resume/Standard/add" onclick="dyweTrackEvent('luMYinfo','clickeAddResume')" class="">创建标准简历</a>
+                                        <a href="http://i.zhaopin.com/resume/AttachResume/add" onclick="dyweTrackEvent('luMYinfo','clickeAddAttach')" class="">创建附件简历</a>
+                                        <i></i>
+                                    </div>
+                                        <div class="setBtn">设为默认</div>
+                                </h3>
+                                <div class="myphoto">
+                                    <div class="pic">
+                                        <img onerror="this.style.display='none'" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/F2CF33CCE89C4E579D4B9E298A65330E_002.jpg" alt="">
+                                        <a style="display: none;" onclick="dyweTrackEvent('luMYinfo','clickAvatar')" href="http://my.zhaopin.com/MYZHAOPIN/editatta_edit.asp?Ext_ID=JR333285330R90250000000&amp;Language_ID=1&amp;Resume_ID=148853231&amp;Version_Number=1" title="修改头像" class="picLink1">
+                                            修改头像
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="myTxt" data-ext_id="JR333285330R90250000000" data-resume_id="148853231" data-version_number="1" data-language_id="1">
+                                    <div class="myTxtTitle">
+                                        <div class="languageTiggle">
+                                        <input value="中文" data-status="1" data-iscomplent="0" type="button">
+                                        <ul>
+                                            <li>英文</li>
+                                        </ul>
+                                        </div>
+                                        <p class="icon_ch" title="未命名简历">未命名简历</p>
+                                        <!--中文简历类名 icon_ch  英文简历类名  icon_en-->
+                                        <i>2012-09-24</i>
+                                    </div>
+                                    <div class="percent">
+                                        <p><em style="width: 0%;">进度条</em></p>
+                                        <span class="percentNum">0%</span>
+                                    </div>
+                                    <div class="openResume">
+                                        <input value="公开简历" type="button">
+                                        <ul>
+                                            <li data-value="2">公开简历</li>
+                                            <li data-value="1">保密简历</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--/.myTxt-->
+                                <div class="myLink">
+                                    <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickeRefresh')" class="myLinkA linkRefresh" url="Home/IsRefreshResume?&amp;resumeId=148853231&amp;extId=JR333285330R90250000000&amp;version=1&amp;language=1"><i></i>刷新</a>
+                                    <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickView')" class="myLinkA linkPreview" data-resumenumber="JR333285330R90250000000" data-resumeid="148853231" data-version="1" data-language="1"><i></i>预览</a>
+                                    <a onclick="dyweTrackEvent('luMYinfo','clickEdit')" href="http://my.zhaopin.com/MYZHAOPIN/resume_preview_edit.asp?ext_id=JR333285330R90250000000&amp;resume_id=148853231&amp;Version_Number=1&amp;language_id=1" target="_blank" class="myLinkA linkAmend"><i></i>修改</a>
+                                    <a onclick="dyweTrackEvent('luMYinfo','clickAutoSend')" href="javascript:;" class="myLinkA linkArrive" ext_id="JR333285330R90250000000&amp;resume_id=148853231&amp;Version_Number=1&amp;language_id=1"><i></i>委托投递</a>
+                                    <a onclick="dyweTrackEvent('luMYinfo','clickBlackLst')" href="http://i.zhaopin.com/ResumeCenter/AccountSet/Index?resume_num=JR333285330R90250000000&amp;version=1" class="myLinkA linkShield" target="_blank"><i></i>企业屏蔽</a>
+                                    <div class="myLinkA linkOperate">
+                                        <i></i>更多操作<input onclick="dyweTrackEvent('luMYinfo', 'clickMore')" value="" type="button">
+                                        <div class="moreOperate">
+                                            <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickExport')" class="deputeDeliver">导出</a>
+                                            <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickCoverLetter')" class="coverLetter">求职信</a>
+                                            <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickDeleteResume')" class="delateRem">删除简历</a>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/.myLink-->
+                            </div>
+                         
+                                <div class="enimgCole" style="display:none">
+                                <h3>
+                                    <span>我的简历</span>
+                                    <input class="addResume" type="button">
+                                    <div class="addRes">
+                                        <a href="http://i.zhaopin.com/resume/Standard/add" onclick="dyweTrackEvent('luMYinfo','clickeAddResume')" class="">创建标准简历</a>
+                                        <a href="http://i.zhaopin.com/resume/AttachResume/add" onclick="dyweTrackEvent('luMYinfo','clickeAddAttach')" class="">创建附件简历</a>
+                                        <i></i>
+                                    </div>
+                                        <div class="setBtn">设为默认</div>
+                                </h3>
+                                <div class="myphoto">
+                                    <div class="pic">
+                                        <img onerror="this.style.display='none'" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/F2CF33CCE89C4E579D4B9E298A65330E_002.jpg" alt="">
+                                        <a style="display: none;" onclick="dyweTrackEvent('luMYinfo','clickAvatar')" href="http://my.zhaopin.com/MYZHAOPIN/editatta_edit.asp?Ext_ID=JR333285330R90250000000&amp;Language_ID=2&amp;Resume_ID=148853231&amp;Version_Number=1" title="修改头像" class="picLink1">
+                                            修改头像
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="myTxt" data-ext_id="JR333285330R90250000000" data-resume_id="148853231" data-version_number="1" data-language_id="2">
+                                    <div class="myTxtTitle">
+                                        <div class="languageTiggle">
+                                        <input value="英文" data-status="2" data-iscomplent="0" type="button">
+                                        <ul>
+                                            <li>中文</li>
+                                        </ul>
+                                        </div>
+                                        <p class="icon_en" title="未命名简历">未命名简历</p>
+                                        <!--中文简历类名 icon_ch  英文简历类名  icon_en-->
+                                        <i>2012-09-24</i>
+                                    </div>
+                                    <div class="percent">
+                                        <p><em style="width: 0%;">进度条</em></p>
+                                        <span class="percentNum">0%</span>
+                                    </div>
+                                    <div class="openResume">
+                                        <input value="公开简历" type="button">
+                                        <ul>
+                                            <li data-value="2">公开简历</li>
+                                            <li data-value="1">保密简历</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--/.myTxt-->
+                                <div class="myLink">
+                                    <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickeRefresh')" class="myLinkA linkRefresh" url="Home/IsRefreshResume?&amp;resumeId=148853231&amp;extId=JR333285330R90250000000&amp;version=1&amp;language_id=2"><i></i>刷新</a>
+                                    <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickView')" class="myLinkA linkPreview" data-resumenumber="JR333285330R90250000000" data-resumeid="148853231" data-version="1" data-language="2"><i></i>预览</a>
+
+                                        <a onclick="dyweTrackEvent('luMYinfo','clickEdit')" href="http://my.zhaopin.com/MYZHAOPIN/resume_add_language.asp?ext_id=JR333285330R90250000000&amp;resume_id=148853231&amp;Version_Number=1&amp;language_id=2" target="_blank" class="myLinkA linkAmend"><i></i>修改</a>
+                                    <a onclick="dyweTrackEvent('luMYinfo','clickAutoSend')" href="javascript:;" class="myLinkA linkArrive" ext_id="JR333285330R90250000000&amp;resume_id=148853231&amp;Version_Number=1&amp;language_id=1"><i></i>委托投递</a>
+                                    <a onclick="dyweTrackEvent('luMYinfo','clickBlackLst')" href="http://i.zhaopin.com/ResumeCenter/AccountSet/Index?resume_num=JR333285330R90250000000&amp;version=1" class="myLinkA linkShield" target="_blank"><i></i>企业屏蔽</a>
+                                    <div class="myLinkA linkOperate">
+                                        <i></i>更多操作<input onclick="dyweTrackEvent('luMYinfo', 'clickMore')" value="" type="button">
+                                        <div class="moreOperate">
+                                            <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickExport')" class="deputeDeliver">导出</a>
+                                            <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickCoverLetter')" class="coverLetter">求职信</a>
+                                            <a href="javascript:;" onclick="dyweTrackEvent('luMYinfo','clickDeleteResume')" class="delateRem">删除简历</a>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/.myLink-->
+                            </div>
+                            </div></div></div>
+                            
+                    <a style="display: none;" title="Previous" href="#" class="slidesjs-previous slidesjs-navigation">Previous</a><a style="display: none;" title="Next" href="#" class="slidesjs-next slidesjs-navigation">Next</a><ul style="left: 212px;" class="slidesjs-pagination"><li class="slidesjs-pagination-item"><a class="active" data-slidesjs-item="0" href="#">1</a></li><li class="slidesjs-pagination-item"><a data-slidesjs-item="1" href="#">2</a></li></ul></div>
+                    <!--/#slides-->
+                </div>
+                <!--/.container-->
+            </div>
+            <!--/.myResume-->
+        </div>
+        <!--/.myData-->
+
+<!-- 新版简历中心推荐 -->
+    <div class="main04" id="main04">
+        <div class="nav-wrapper" id="nav" style="display: block;">
+            <div class="nav">
+                <h3>适合你的职位</h3>
+                <div class="nav_btn">
+                    <div class="selIcon">
+                        <i class="likeChecked"></i>
+                        <input onclick="dyweTrackEvent('luMYjoblst', 'clickCheckall');" name="alljob" checked="checked" type="checkbox"><label>全选</label>
+                    </div>
+                        <a class="apply applyFire" onclick="jobsApplication(); dyweTrackEvent('luMYjoblst', 'clickSentAllBtn');">申请选中职位</a>
+                </div>
+                <!--/.nav_btn-->
+            </div>
+        </div>
+        <div class="nav-wrapper-fixed" id="navFixed" style="display: none;">
+            <div class="nav">
+                <h3>适合你的职位</h3>
+                <div class="nav_btn">
+                    <div class="selIcon">
+                        <i class="likeChecked"></i>
+                        <input onclick="dyweTrackEvent('luMYjoblst', 'clickCheckall')" name="alljob" checked="checked" type="checkbox"><label>全选</label>
+                    </div>
+                        <a class="apply applyFire" onclick="jobsApplication(); dyweTrackEvent('luMYjoblst', 'clickSentAllBtn');">申请选中职位</a>
+                </div>
+                <!--/.nav_btn-->
+            </div>
+        </div>
+    </div> <!--/.main04-->
+    <div class="main05">
+            <div style="display: block;" class="pageWrap">
+                        <div class="cole fireCole coleDeep colorFire">
+                            <div class="title">
+                                <div class="selIcon">
+                                    <i class="likeChecked"></i>
+                                    <input checked="checked" name="job" value="CC378959386J90250004000_736_1_10_310__1_" type="checkbox">
+                                </div>
+                            <div class="inforTxt">
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/378959386250004.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="赴日软件工程师">赴日软件工程师</a><em>20001-30000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC378959386.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="大连市小松信息系统服务有限公司">大连市小松信息系统服务有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-03</font>
+                                </div>
+                                <!--/.infor02-->
+                            <i></i></div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC378959386J90250004000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC378959386J90250004000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC378959386J90250004000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                        <div class="cole fireCole">
+                            <div class="title">
+                                <div class="selIcon">
+                                    <i class="likeChecked"></i>
+                                    <input checked="checked" name="job" value="CC537757626J90250204000_736_1_10_310__1_" type="checkbox">
+                                </div>
+                            <div class="inforTxt">
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/537757626250204.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="SDK软件开发工程师">SDK软件开发工程师</a><em>15001-20000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/%E5%8C%97%E4%BA%AC%E5%8D%8E%E5%AF%8C%E7%9D%BF%E6%99%BA%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_CC537757626.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="北京华富睿智科技有限公司">北京华富睿智科技有限公司</a>
+                                    
+                                    <span title="武汉-东湖新技术开发区">武汉-东湖新技术开发区</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            <i></i></div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC537757626J90250204000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC537757626J90250204000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC537757626J90250204000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                        <div class="cole fireCole coleDeep colorFire">
+                            <div class="title">
+                                <div class="selIcon">
+                                    <i class="likeChecked"></i>
+                                    <input checked="checked" name="job" value="CC288668681J90250012000_736_1_10_310__1_" type="checkbox">
+                                </div>
+                            <div class="inforTxt">
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/288668681250012.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="软件工程师（SDH协议）">软件工程师（SDH协议）</a><em>15001-20000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC288668681.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="上海猎能企业管理有限公司">上海猎能企业管理有限公司</a>
+                                    
+                                    <span title="武汉-东湖新技术开发区">武汉-东湖新技术开发区</span>
+                                    <small>| </small><font>2016-03-31</font>
+                                </div>
+                                <!--/.infor02-->
+                            <i></i></div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC288668681J90250012000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC288668681J90250012000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC288668681J90250012000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                        <div class="cole fireCole">
+                            <div class="title">
+                                <div class="selIcon">
+                                    <i class="likeChecked"></i>
+                                    <input checked="checked" name="job" value="CC592333722J90250035000_736_1_10_310__1_" type="checkbox">
+                                </div>
+                            <div class="inforTxt">
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/592333722250035.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="PHP,.Net,Java,Android,iOS软件工程师">PHP,.Net,Java,Android,iOS软件工程师</a><em>15001-20000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC592333722.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="上海荐享信息科技有限公司">上海荐享信息科技有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-03-20</font>
+                                </div>
+                                <!--/.infor02-->
+                            <i></i></div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC592333722J90250035000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC592333722J90250035000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC592333722J90250035000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                        <div class="cole fireCole coleDeep colorFire">
+                            <div class="title">
+                                <div class="selIcon">
+                                    <i class="likeChecked"></i>
+                                    <input checked="checked" name="job" value="CC657974428J90250153000_736_1_10_310__1_" type="checkbox">
+                                </div>
+                            <div class="inforTxt">
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/657974428250153.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="C++软件工程师">C++软件工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC657974428.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="网云(武汉)三维科技股份有限公司">网云(武汉)三维科技股份有限公司</a>
+                                    
+                                    <span title="武汉-洪山区">武汉-洪山区</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            <i></i></div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC657974428J90250153000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC657974428J90250153000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC657974428J90250153000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC295586332J90250034000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/295586332250034.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="软件开发工程师(图像算法）">软件开发工程师(图像算法）</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC295586332.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉市安天地科技有限公司">武汉市安天地科技有限公司</a>
+                                    
+                                    <span title="武汉-江汉区">武汉-江汉区</span>
+                                    <small>| </small><font>2016-04-01</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC295586332J90250034000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC295586332J90250034000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC295586332J90250034000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC705115325J90250020000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/705115325250020.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="JAVA软件工程师">JAVA软件工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC705115325.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉富帅科技有限公司">武汉富帅科技有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-03-25</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC705115325J90250020000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC705115325J90250020000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC705115325J90250020000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC367922030J90250006000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/367922030250006.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="12K+高级软件工程师：WEB前端和Python后端">12K+高级软件工程师：WEB前端和Python后端</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC367922030.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉云页移动科技有限公司">武汉云页移动科技有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC367922030J90250006000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC367922030J90250006000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC367922030J90250006000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC319982316J90250020000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/319982316250020.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="java高级软件工程师/java高级项目经理/高薪双休五险一金">java高级软件工程师/java高级项目经理/高薪双休五险一金</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/%E6%AD%A6%E6%B1%89%E5%B8%82%E5%A4%AA%E6%9E%81%E5%8D%8E%E9%9D%92%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_CC319982316.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉市太极华青信息系统有限公司">武汉市太极华青信息系统有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC319982316J90250020000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC319982316J90250020000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC319982316J90250020000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC570721023J90250008000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/570721023250008.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="高级.net软件工程师">高级.net软件工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC570721023.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉欧欣泽科技有限公司">武汉欧欣泽科技有限公司</a>
+                                    
+                                    <span title="武汉-东湖新技术开发区">武汉-东湖新技术开发区</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC570721023J90250008000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC570721023J90250008000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC570721023J90250008000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC131805892J90250041000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/131805892250041.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="Java软件工程师">Java软件工程师</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/P10/CC1318/0589/CC131805892.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉赛柏欧智能软件有限公司">武汉赛柏欧智能软件有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC131805892J90250041000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC131805892J90250041000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC131805892J90250041000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC184983421J90252178000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/184983421252178.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="互联网软件工程师架构程序员软件研发工程师手机软件开发工程师">互联网软件工程师架构程序员软件研发工程师手机软件开发工程师</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/P3/CC1849/8342/CC184983421.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="北京惠天听书科技有限公司">北京惠天听书科技有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC184983421J90252178000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC184983421J90252178000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC184983421J90252178000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC241047382J90250083000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/241047382250083.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="Java高级软件工程师">Java高级软件工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC241047382.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉一代人教育科技有限公司">武汉一代人教育科技有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC241047382J90250083000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC241047382J90250083000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC241047382J90250083000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC268029711J90250365000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/268029711250365.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title=".net高级软件工程师">.net高级软件工程师</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/%E6%AD%A6%E6%B1%89%E7%BE%A4%E7%BF%94%E8%BD%AF%E4%BB%B6%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_CC268029711.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉群翔软件有限公司">武汉群翔软件有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC268029711J90250365000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC268029711J90250365000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC268029711J90250365000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC409114317J90250060000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/409114317250060.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="Java高级软件工程师(大数据方向)">Java高级软件工程师(大数据方向)</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/%E6%AD%A6%E6%B1%89%E9%97%BB%E9%A3%8E%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_CC409114317.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉闻风科技有限公司">武汉闻风科技有限公司</a>
+                                    
+                                    <span title="武汉-东湖新技术开发区">武汉-东湖新技术开发区</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC409114317J90250060000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC409114317J90250060000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC409114317J90250060000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+            </div>
+            <div class="pageWrap">
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC225131023J90250134000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/225131023250134.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="C++高级软件工程师">C++高级软件工程师</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/%E5%BF%97%E6%88%90%E5%87%8C%E4%BA%91%28%E5%8C%97%E4%BA%AC%29%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_CC225131023.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="志成凌云(北京)科技有限公司">志成凌云(北京)科技有限公司</a>
+                                    
+                                    <span title="武汉-武昌区">武汉-武昌区</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC225131023J90250134000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC225131023J90250134000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC225131023J90250134000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC397336016J90250008000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/397336016250008.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="软件工程师">软件工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC397336016.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉海川创智科技有限公司">武汉海川创智科技有限公司</a>
+                                    
+                                    <span title="武汉-东湖新技术开发区">武汉-东湖新技术开发区</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC397336016J90250008000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC397336016J90250008000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC397336016J90250008000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC327953119J90250429000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/327953119250429.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="云平台高级软件开发工程师">云平台高级软件开发工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/%E6%B9%96%E5%8C%97%E5%8D%8E%E7%A7%A6%E6%95%99%E8%82%B2%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_CC327953119.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="湖北华秦教育软件技术有限公司">湖北华秦教育软件技术有限公司</a>
+                                    
+                                    <span title="武汉-洪山区">武汉-洪山区</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC327953119J90250429000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC327953119J90250429000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC327953119J90250429000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC560878523J90250198000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/560878523250198.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title=".Net软件开发工程师">.Net软件开发工程师</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC560878523.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="南京泉点商务服务有限公司">南京泉点商务服务有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC560878523J90250198000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC560878523J90250198000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC560878523J90250198000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC345674314J90250133000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/345674314250133.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="通讯软件工程师">通讯软件工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/%E6%AD%A6%E6%B1%89%E5%BE%B7%E6%99%9F%E7%A5%A5%E7%A7%91%E8%B4%B8%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_CC345674314.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉电动汽车技术开发有限公司">武汉电动汽车技术开发有限公司</a>
+                                    
+                                    <span title="武汉-东湖新技术开发区">武汉-东湖新技术开发区</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC345674314J90250133000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC345674314J90250133000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC345674314J90250133000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC165749013J90250237000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/165749013250237.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="高级嵌入式软件工程师">高级嵌入式软件工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/P2/CC1657/4901/CC165749013.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="上海陆杰电子科技有限公司">上海陆杰电子科技有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC165749013J90250237000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC165749013J90250237000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC165749013J90250237000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC132067437J90284951000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/132067437284951.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="软件开发工程师（智慧城市）">软件开发工程师（智慧城市）</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/P4/CC1320/6743/D900/000/CC132067437D90000004000.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="青岛海信网络科技股份有限公司">青岛海信网络科技股份有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC132067437J90284951000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC132067437J90284951000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC132067437J90284951000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC542805523J90250000000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/542805523250000.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="C++软件工程师">C++软件工程师</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC542805523.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉金策略信息科技有限公司">武汉金策略信息科技有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC542805523J90250000000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC542805523J90250000000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC542805523J90250000000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC379741932J90250030000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/379741932250030.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="android软件工程师">android软件工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC379741932.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉斯派德技术服务有限公司">武汉斯派德技术服务有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC379741932J90250030000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC379741932J90250030000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC379741932J90250030000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC352905916J90250851000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/352905916250851.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="嵌入式软件工程师(武汉)">嵌入式软件工程师(武汉)</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://special.zhaopin.com/pagepublish/35290591/index.html?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="浙江亿邦通信科技股份有限公司">浙江亿邦通信科技股份有限公司</a>
+                                    
+                                    <span title="武汉-洪山区">武汉-洪山区</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC352905916J90250851000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC352905916J90250851000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC352905916J90250851000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC370404435J90250008000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/370404435250008.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="JAVA高级软件工程师">JAVA高级软件工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC370404435.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉希尔智慧科技有限公司">武汉希尔智慧科技有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC370404435J90250008000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC370404435J90250008000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC370404435J90250008000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC303902032J90250001000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/303902032250001.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="java高级软件开发工程师">java高级软件开发工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC303902032.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉胜成网络科技有限公司">武汉胜成网络科技有限公司</a>
+                                    
+                                    <span title="武汉-东湖新技术开发区">武汉-东湖新技术开发区</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC303902032J90250001000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC303902032J90250001000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC303902032J90250001000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC309319180J90250003000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/309319180250003.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="Java软件开发工程师（高级）">Java软件开发工程师（高级）</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC309319180.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="北京北创芯通科技有限公司武汉分公司">北京北创芯通科技有限公司武汉分公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC309319180J90250003000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC309319180J90250003000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC309319180J90250003000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC340948780J90250023000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/340948780250023.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="初/中/高级Java软件开发工程师">初/中/高级Java软件开发工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC340948780.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉逸得科技有限责任公司">武汉逸得科技有限责任公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC340948780J90250023000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC340948780J90250023000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC340948780J90250023000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC120702341J90252758000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/120702341252758.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="java软件开发工程师">java软件开发工程师</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/P5/CC1207/0234/CC120702341.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="高伟达软件股份有限公司">高伟达软件股份有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC120702341J90252758000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC120702341J90252758000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC120702341J90252758000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+            </div>
+            <div class="pageWrap">
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC121129607J90250516000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/121129607250516.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="Java软件工程师（云平台）">Java软件工程师（云平台）</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/P1/CC1211/2960/CC121129607.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="立得空间信息技术有限公司">立得空间信息技术有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC121129607J90250516000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC121129607J90250516000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC121129607J90250516000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC508780020J90250084000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/508780020250084.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="DSP软件工程师">DSP软件工程师</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://special.zhaopin.com/pagepublish/50878002/index.html?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉虹识技术有限公司">武汉虹识技术有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC508780020J90250084000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC508780020J90250084000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC508780020J90250084000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC314184633J90250030000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/314184633250030.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="软件工程师可兼职高薪面议">软件工程师可兼职高薪面议</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC314184633.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉市同和兴投资管理有限公司">武汉市同和兴投资管理有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC314184633J90250030000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC314184633J90250030000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC314184633J90250030000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC299215631J90250077000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/299215631250077.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="计算机软件工程师 有赴日就业机会 月薪11K起">计算机软件工程师 有赴日就业机会 月薪11K起</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC299215631.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="昆明瑶池科技有限公司">昆明瑶池科技有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC299215631J90250077000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC299215631J90250077000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC299215631J90250077000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC503246920J90250007000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/503246920250007.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="高级软件工程师（五险一金）">高级软件工程师（五险一金）</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC503246920.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉瑞迪时代软件技术有限公司">武汉瑞迪时代软件技术有限公司</a>
+                                    
+                                    <span title="武汉-洪山区">武汉-洪山区</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC503246920J90250007000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC503246920J90250007000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC503246920J90250007000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC000602275J90250402000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/000602275250402.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title=".net高级软件工程师">.net高级软件工程师</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/P8/CC0006/0227/CC000602275.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="上海互联网软件有限公司（Shanghai Internet Software Co., Ltd）">上海互联网软件有限公司（Shanghai Internet Software Co., Ltd）</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC000602275J90250402000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC000602275J90250402000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC000602275J90250402000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC171774417J90251400000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/171774417251400.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="1.14软件工程师-android-app">1.14软件工程师-android-app</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/P2/CC1717/7441/CC171774417.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="江苏润和软件股份有限公司">江苏润和软件股份有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC171774417J90251400000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC171774417J90251400000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC171774417J90251400000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC230292410J90253107000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/230292410253107.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="IOS高级软件工程师（WH-D007-3242）">IOS高级软件工程师（WH-D007-3242）</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://special.zhaopin.com/bj/2012/sl040674/index.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="瞬联讯通科技(北京)有限公司">瞬联讯通科技(北京)有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC230292410J90253107000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC230292410J90253107000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC230292410J90253107000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC245848213J90250068000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/245848213250068.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="高级软件工程师">高级软件工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/P2/CC2458/4821/CC245848213.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉科思特仪器股份有限公司">武汉科思特仪器股份有限公司</a>
+                                    
+                                    <span title="武汉-东湖新技术开发区">武汉-东湖新技术开发区</span>
+                                    <small>| </small><font>2016-04-05</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC245848213J90250068000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC245848213J90250068000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC245848213J90250068000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC380276421J90250635000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/380276421250635.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="赴日IOS开发软件工程师">赴日IOS开发软件工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/%E5%8D%81%E5%A0%B0%E4%BC%8A%E8%8E%B1%E7%89%B9%E5%B7%A5%E8%B4%B8%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_CC380276421.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="株式会社Proface Systems">株式会社Proface Systems</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-04</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC380276421J90250635000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC380276421J90250635000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC380276421J90250635000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC266992634J90250030000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/266992634250030.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="ios软件开发工程师">ios软件开发工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://special.zhaopin.com/pagepublish/26699263/index.html?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="湖北宝乐购网络技术有限公司">湖北宝乐购网络技术有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-04</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC266992634J90250030000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC266992634J90250030000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC266992634J90250030000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC354268218J90250041000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/354268218250041.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="高级嵌入式linux软件工程师">高级嵌入式linux软件工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC354268218.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉白虹软件科技有限公司">武汉白虹软件科技有限公司</a>
+                                    
+                                    <span title="武汉-东湖新技术开发区">武汉-东湖新技术开发区</span>
+                                    <small>| </small><font>2016-04-04</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC354268218J90250041000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC354268218J90250041000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC354268218J90250041000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC478387918J90250035000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/478387918250035.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="互联网软件开发工程师">互联网软件开发工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC478387918.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉磐石培良投资有限公司">武汉磐石培良投资有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-04</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC478387918J90250035000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC478387918J90250035000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC478387918J90250035000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC376478184J90250000000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/376478184250000.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="互联网软件开发工程师">互联网软件开发工程师</a><em>10001-15000元/月</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC376478184.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉智盟齐扬信息科技有限公司">武汉智盟齐扬信息科技有限公司</a>
+                                    
+                                    <span title="武汉-洪山区">武汉-洪山区</span>
+                                    <small>| </small><font>2016-04-04</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC376478184J90250000000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC376478184J90250000000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC376478184J90250000000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+                    <div class="cole coleDeep">
+                        <div class="title">
+                            <div class="selIcon">
+                                <i class="likeChecked"></i>
+                                <input checked="checked" name="job" value="CC230403083J90250013000_736_1_10_310__1_" type="checkbox">
+                            </div>
+                            <div class="inforTxt">
+
+                                <div class="infor01"><a href="http://jobs.zhaopin.com/230403083250013.htm?ff=10&amp;ss=310" onclick="dyweTrackEvent('luMYjoblst','clickJobtitle');" target="_blank" title="高级程序员/软件工程师">高级程序员/软件工程师</a><em>面议</em></div>
+                                <!--/.infor01-->
+                                <div class="infor02">
+                                    <a href="http://company.zhaopin.com/CC230403083.htm?sp=100&amp;act=101" onclick="dyweTrackEvent('aboutposition','topapply');" target="_blank" title="武汉今儒教育科技有限公司">武汉今儒教育科技有限公司</a>
+                                    
+                                    <span title="武汉">武汉</span>
+                                    <small>| </small><font>2016-04-02</font>
+                                </div>
+                                <!--/.infor02-->
+                            </div>
+                            <!--/.inforTxt-->
+                            <div class="coleBtn">
+                                <a class="btn_a btn_a2" data-resumenumber="CC230403083J90250013000" data-city="736" data-applytype="1" data-jk="10_310__2_" onclick="application(this);dyweTrackEvent('luMYjoblst', 'clickSentBtn');">申请职位</a>
+                                <a class="btn_a btn_a1" title="点击收藏" data-resumenumber="CC230403083J90250013000" data-city="736" data-applytype="1" data-jk="1" onclick="collection(this);dyweTrackEvent('luMYjoblst', 'clickFavJob');"></a>
+                            </div>
+                            <!--/.coleBtn-->
+                            <i class="coleArrow" onclick="dyweTrackEvent('luMYjoblst', 'clickOpenUp');" data-extid="CC230403083J90250013000"></i>
+                        </div>
+                        <!--/.title-->
+                    </div>
+            </div>
+            <div class="page">
+                <div><a title="当前第一页" onclick="dyweTrackEvent('luMYjoblst', 'clickPageNav');" class="left leftGray"></a><a class="right"></a></div>
+            </div>
+            <!--/.page-->
+    </div>
+
+        <!--/.main05-->
+        <form name="frmSearch" id="frmSearch">
+            <div class="search">
+                <div class="seaCity">
+                    <input class="inputTips" value="输入/选择城市" id="JobLocation" name="JobLocation" onblur="zlzp.setDefTxt(this,zlzp.searchjob.c_tips);" onfocus="zlzp.clearDefTxt(this,zlzp.searchjob.c_tips);" type="text"><input name="buttonSelCity" id="buttonSelCity" type="button">
+                </div>
+                <div class="seaJob">
+                    <input value="职位" id="buttonSelJobType" name="buttonSelJobType" type="button">
+                </div>
+                <div class="seaCompany">
+                    <input class="inputTips" value="输入公司名称或职位名称" iskeyword="1" submitform="1" xhrstyle="k" xhrasp="http://sou.zhaopin.com/jobs/ajax/ajax_keywords.aspx" sjmodule="AutoComplete" maxlength="100" name="KeyWord" autocomplete="off" onblur="zlzp.setDefTxt(this,zlzp.searchjob.k_tips);" onfocus="zlzp.clearDefTxt(this,zlzp.searchjob.k_tips);" type="text">
+                </div>
+                <a href="javascript:;" class="seaBtn" id="search" onclick="zlzp.searchjob.gotoSearch_t('', 'new');">找工作</a>
+            </div>
+            <input value="" name="page" type="hidden">
+            <input value="" name="SchJobType" type="hidden">
+            <input value="" name="subJobtype" type="hidden">
+            <input value="" name="industry" type="hidden">
+            <input value="" name="PublishDate" type="hidden">
+            <input value="" name="sortby" type="hidden">
+            <input value="0" name="SearchModel" type="hidden">
+            <input value="jobsearch" name="ref" type="hidden">
+            <input value="" name="f_kw" type="hidden">
+            <input name="JobLocation_oq" value="" type="hidden">
+            <input name="JobLocation_aq" value="f" type="hidden">
+            <input name="KeyWord_oq" value="输入公司名称或职位名称" type="hidden">
+            <input name="KeyWord_aq" value="f" type="hidden">
+        </form>
+    </div>
+<div class="account_footer clearfix">
+    <div class="account_footerl fl">
+        <p>
+            <a onmousedown="return AdsClick(121115223,'zhilianjieshao')" href="http://special.zhaopin.com/sh/2009/aboutus/about.html" class="acc_zpa">智联招聘</a>
+            <a onmousedown="return AdsClick(121115223,'falvshengming')" href="http://special.zhaopin.com/sh/2009/aboutus/law.html">法律声明</a>
+            <a onmousedown="return AdsClick(121115223,'changjianwenti')" href="http://jobseeker.zhaopin.com/zhaopin/faq/question.html">常见问题</a>
+        </p>
+        <p>
+            <a href="http://www.zhaopin.com/sitemap.html">网站地图</a>
+            <a onmousedown="return AdsClick(121115223,'baomichengnuo')" href="http://special.zhaopin.com/sh/2009/aboutus/secrecy.html">保密承诺</a>
+            <a onmousedown="return AdsClick(121115223,'touzizheguanxi')" href="http://zhaopin.investorroom.com/">Investor Relations</a>
+        </p>
+        <p>
+            <a onmousedown="return AdsClick(121115223,'jiaruzhilian')" href="http://special.zhaopin.com/sh/2009/aboutus/join.html">加入智联</a>
+            <a onmousedown="return AdsClick(121115223,'lianxifangshi')" href="http://special.zhaopin.com/sh/2009/aboutus/contact.html">联系方式</a>
+            <span>您对 Zhaopin.com 有任何建议或意见请</span><a onclick="openFeedback('http://interact.zhaopin.com/feedback/feedback.asp');return false;" onmousedown="return AdsClick(121115223,' contactus')" href="#" rel="nofollow">联系我们</a>
+        </p>
+        <p class="mb15 col555">未经zhaopin.com 同意，不得转载本网站之所有招聘信息及作品 智联招聘网版权所有© 1997-2016</p>
+        
+        <p class="col555">京ICP备12025925号 电信业务审批[2001]字第233号函 <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502002133" style="height:20px;line-height:20px;margin: 0 0 0 5px; color:#939393;">京公网安备11010502002133号</a>
+</p>
+    </div>
+    <div class="account_footerr fl">
+        <p class="mt26">
+            <img src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/icon_ej.png">
+        </p>
+        <p class="col333 acc_iphone">400-885-9898</p>
+    </div>
+</div>
+<!-- account_footer结束 -->
+<script src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/dc.js" async="" type="text/javascript"></script><script src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/dywe.js" async="" type="text/javascript"></script><script type="text/javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/jquery-1.js"></script>
+<script type="text/javascript">
+    //头部下拉
+    var $acc_hover = $(".people").find('.acc_hover');
+    $(".people").hover(function () {
+        $acc_hover.stop(true, true).fadeIn(0);
+    }, function () {
+        $acc_hover.fadeOut(500, function () {
+            $acc_hover.css("display", "none");
+        });
+    });
+    //点击头部下拉列表中的退出发送退出请求
+    $('.people ul li a:contains("退出")').on('click', function () {
+        ZPIDC.applyjob.LoginoutHeadHtml();
+    });
+
+    function openFeedback(strTarget) {
+
+        window.open(strTarget, "_blank", "width=1,height=1,left=100,top=60,scrollbars=0,overflow=auto,status=0");
+    }
+</script>
+
+<iframe marginheight="0" marginwidth="0" scrolling="NO" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/new_register_tracking.html" frameborder="0" height="0" width="0"></iframe>    <script type="text/javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/jquery.js"></script>
+    <script type="text/javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/jquery_002.js"></script>
+    <script type="text/javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/resumeCenterMain.js"></script>
+    <!--我的智联主页面初始化js-->
+    <!--/.wrap-->
+    <!--begin 新版添加的js文件-->
+
+    <!--我的智联主页面初始化js-->
+    <!--end 新版添加的js文件-->
+    <!--begin  旧版js文件-->
+    <script type="text/javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/zpidc.js"></script>
+    <!--定义全局对象ZPIDC-->
+    <script src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/jquery_003.js" type="text/javascript" charset="utf-8"></script>
+    <!--弹出窗口js-->
+    <script type="text/javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/ajaxbase.js"></script>
+    <!--ajax基础文件-->
+    <script type="text/javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/zpidc_002.js"></script>
+    <!--登录js-->
+    <script type="text/javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/applynow.js"></script>
+    <!--职位申请js-->
+    <!--begin 反馈通提醒开通和微信二维码 -->
+    <script type="text/javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/window.js"></script>
+    <!--微信二维码弹窗需要的js-->
+    <script type="text/javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/job-apply.js"></script>
+    <!--反馈通提醒开通和微信二维码弹窗js-->
+    <!--end 反馈通提醒开通和微信二维码 -->
+
+    <script type="text/javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/basedata.js"></script>
+    <!--搜索控件数据源-城市-->
+    <script type="text/javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/arrdata.js"></script>
+    <!--搜索控件数据源-职位-->
+    <script type="text/javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/ga.js"></script>
+    <!--飘窗-->
+
+     <!--监控js-->
+    <!--end    旧版js文件-->
+    <link type="text/css" rel="Stylesheet" href="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/live800.css">
+    <script src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/staticButton.js"></script><script language="javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/utils.js"></script><script language="javascript" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/staticButtonStatic.js"></script>
+    <div class="line-img line_service" id="live23"><a id="live800iconlink" href="javascript:void(0)" onclick="try{parent.closeMini();}catch(e){;}globalStaticIcon.getOnGenerateClick()"><img name="live800icon" id="live800icon" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/SurferServer.jpeg" border="0"></a></div>
+    <script id="write" type="text/javascript">
+        function writehtml() { var temptext = StaticIcon_generate(); document.getElementById('live23').innerHTML = temptext; setTimeout('write.src', 9000); } writehtml();
+    </script>
+    
+
+
+<script src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/searchjob_20121008.js" async=""></script><div class="tipso_style" style="position: fixed;" id="kf-my-tips"></div><a style="background-image: url(&quot;data:image/gif;base64,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&quot;); background-size: 18px 18px; top: 421px; left: 711px; display: none; line-height: 18px;" href="javascript:void(0);" name="ke-my-add-btn" id="kf-my-add-btn"></a><div style="background-image: url(&quot;data:image/gif;base64,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&quot;);" id="kf-add-loading-img"></div><div id="kf-content-div" style="display: none; right: 20px; bottom: -90px;"><div id="kf-top-div"><a style="color: rgba(0, 0, 0, 0.25); background: transparent none repeat scroll 0% 0%;" href="javascript:void(0)" id="kf-wiki-tab">WIKIPEDIA</a><a style="color: rgba(255, 255, 255, 0.88); background: rgba(56, 189, 15, 0.6) none repeat scroll 0% 0%;" href="javascript:void(0)" id="kf-translator-tab">	TRANSLATOR</a></div><div id="kf-frame-div"><div style="font-size: 1em;" id="kf-trans-div">So happy</div><div style="display: none; font-size: 1em;" name="kf-wiki-div" id="kf-wiki-div"></div></div></div><div class="sPopupDiv" style="width: 710px;"><div class="sPopupBlock"></div><div class="sPopupTitle_down188"><h1>选择职位</h1><div class="sButtonBlock"><a class="blueButton" href="#" onclick="return zlzp.PopupDiv.allIns['buttonSelJobType'].fnClickAll()">不限</a> <a class="blueButton" href="#" onclick="return zlzp.PopupDiv.allIns['buttonSelJobType'].fnClickClose()">关闭</a></div><div class="clear"></div></div><div class="clear"></div></div><div class="sPopupDiv" style="width: 468px;"><div class="sPopupBlock"></div><div class="sPopupTitle_down188"><h1>选择城市</h1><div class="sButtonBlock">&nbsp;<a class="blueButton" href="#" onclick="return zlzp.PopupDiv.allIns['buttonSelCity'].fnClickClose()">关闭</a></div><div class="clear"></div></div><div class="clear"></div></div><div id="divMask" style="position: absolute; top: 0px; left: 0px; width: 1353px; height: 2710px; background: rgb(0, 0, 0) none repeat scroll 0% 0%; opacity: 0.3; z-index: 8000;"></div><div id="divPopup" style="width: 650px; height: auto; position: absolute; top: 0px; left: 351.5px; z-index: 9000;"><div style="cursor: auto;" id="popupTit"><div id="popupClose">close</div><div id="popupTitle">预览简历</div></div><div id="popupCon"><div id="popupInnerCon"><title>简历预览</title><link rel="stylesheet" type="text/css" href="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/reset.css" media="all"><link rel="stylesheet" type="text/css" href="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/resume_preview_002.css" media="all"><div class="resumeBody"><div class="summary"><img class="headerImg" alt="刘杰" src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/F2CF33CCE89C4E579D4B9E298A65330E.jpg" align="right" height="90" width="70"><h1>刘杰</h1>男<span class="ver-line">|</span>未婚<span class="ver-line">|</span>1989年11月生<span class="ver-line">|</span>
+            户口：湖北-武汉<span class="ver-line">|</span>
+              现居住于:湖北 武汉-武昌区<span class="ver-line">|</span>中共党员(含预备党员) <br>身份证:429006198911147718<p>13647236400</p><p>
+              E-mail：<a href="mailto:liu_jie_1@126.com">liu_jie_1@126.com</a></p></div><dl class="details"><dt><h5>求职意向</h5></dt><dd><ul><li><strong>工作性质：</strong>全职</li><li><strong>期望职业：</strong>高级软件工程师、软件研发工程师、系统架构设计师、ERP技术/开发应用、系统集成工程师、</li><li><strong>期望行业：</strong>基金/证券/期货/投资、计算机软件</li><li><strong>工作地区：</strong>武汉</li><li><strong>期望月薪：</strong>10001-15000元/月</li><li><strong>目前状况：</strong>我对现有工作还算满意，如有更好的工作机会，我也可以考虑。（到岗时间另议）</li></ul></dd><dt><h5>自我评价</h5></dt><dd><p style="width:574px; overflow:hidden;word-break: break-all; word-wrap:break-word;">在企业信息化管理软件PLM领域上做了五年，从事公司的PDM产品的技术性研发工作，从修改产品缺陷到产品功能设计，到参与需求分析对PDM产品行业有一定的理解。<br><br>主要工作职责为：根据多个项目上的需求进行需求分析，制定解决方案；优化现有产品的代码架构，提高大数据环境下的程序执行效率与用户体验。<br><br>由于一直从事产品结构复杂的PDM维护工作，在百万级代码的大型项目维护上颇有心得体会 ，在大数据维护和性能提升方面有经验。<br><br>热衷于团队合作和技术交流，性格温和、易于沟通。</p></dd><dt><h5>工作经历</h5></dt><dd><div class="work-experience"><p>2015/09 -- 
+                            至今
+                          </p><h6>武汉开目信息技术有限公司<span class="ver-line">|</span>软件开发工程师</h6><p><span>
+                          行业类别： 计算机软件</span><span><span class="ver-line">|</span>职位月薪：8001-10000元/月</span></p><p><strong>工作描述：</strong><br>使用VC++ 维护公司现有的平台产品（组件集群构成）。负责对现有平台产品进行分布式改造。</p></div><div class="work-experience"><p>2010/11 -- 2015/09</p><h6>武汉开目信息技术有限公司<span class="ver-line">|</span>软件工程师</h6><p><span>
+                          行业类别： 计算机软件</span><span><span class="ver-line">|</span>企业性质：民营</span><span><span class="ver-line">|</span>职位月薪：8001-10000元/月</span></p><p><strong>工作描述：</strong><br>开目是一家做企业信息化管理软件的正规、品牌公司，主营产品之一就是PDM产品。作为PDM产品组的开发人员，我的工作职责主要为：<br>1.负责PDM的日常维护，进行缺陷的修改，从事产品优化工作，以提高性能和用户体验为目的。<br>2.响应市场需求，根据用户需求制定解决方案以及概要设计与详细设计工作，参与编码与指导编码工作。<br>此外还负责新技术预研与推广，新人培训，以及对项目现场和组内开发人员提供技术支持。担任了部分简单的管理工作，负责缺陷库的维护与任务分派，任务分解工作。</p></div></dd><dt><h5>项目经验</h5></dt><dd><div class="project-experience"><p>2010/11 -- 
+                            至今
+                          </p><h6>KMPDM</h6><div><p><strong>软件环境：</strong>Windows 操作系统</p><p><strong>开发工具：</strong>PB ， VS</p></div><p><strong>责任描述：</strong><br>根据用户需求制定解决方案，概要设计与详细设计说明书的编写， 编码。<br>产品功能的维护与缺陷的修改。</p><p><strong>项目简介：</strong><br>PDM（产品数据管理)</p></div><div class="project-experience"><p>2009/03 -- 2010/11</p><h6>基于MEMS传感器的交通灯应急干预系统</h6><div><p><strong>软件环境：</strong>vc++6..0</p><p><strong>硬件环境：</strong>89c51&nbsp;&nbsp; arm&nbsp;&nbsp;zigbee无线通信</p><p><strong>开发工具：</strong>IAR&nbsp;&nbsp; vc</p></div><p><strong>责任描述：</strong><br>手势识别算法分析&nbsp;&nbsp;信号采集处理&nbsp;&nbsp;整体项目的管理</p><p><strong>项目简介：</strong><br>通过传感器来识别交警的手势 ，将交警的手势与交通灯的状态联动起来。适用于紧急交通时间，或上下班时间段十字路口交通的调节。</p></div></dd><dt><h5>教育经历</h5></dt><dd><div class="education-background"><p>2007/09 -- 
+                            至今
+                          </p><h6>湖北第二师范学院<span class="ver-line">|</span>计算机科学与技术<span class="ver-line">|</span>本科</h6></div></dd><dt><h5>在校学习情况</h5></dt><dd><div><h6>
+                        曾获 国家级 一等奖 奖学金
+                      </h6></div></dd><dd><p>院学生会　　权益部部长<br>班级班干部　组织委员<br>学院传感器工作室　主席</p></dd><dd><div><h6>2010/03 国家励志奖学金 国家级</h6><p>获学生会“优秀学生干部”<br>获“优秀班干部”<br>运动会　“优秀现金个人”<br>“暑期实践优秀先进个人”<br>全国软件设计人才大赛　三等奖<br>美新杯　　一等奖<br></p></div></dd><dt><h5>在校实践经验</h5></dt><dd><div class="social"><p>2009/03 -- 2010/03</p><h6>网络中心实习</h6><p>协助管理校园网，保证各个宿舍楼网点通信正常。代收学生校园网费用。</p></div><div class="social"><p>2008/03 -- 2008/07</p><h6>学工助理</h6><p>勤工俭学，协助院学工部主任处理一些文档，接听电话等辅助工作。</p></div></dd><dt><h5>证书</h5></dt><dd><div class="certificates"><p>2008/03</p><h6>全国计算机等级二级</h6><p></p></div></dd><dd><div class="certificates"><p>2009/03</p><h6>大学英语四级</h6><p>CET-4 证书</p></div></dd><dd><div class="certificates"><p>2008/03</p><h6>普通话等级证书</h6><p>二级　乙等</p></div></dd><dt><h5>语言能力</h5></dt><dd><div class="language-skill">英语<span>
+                            ：读写能力一般<span class="ver-line">|</span> 听说能力一般</span></div></dd><dt><h5>专业技能</h5></dt><dd><div class="professional-skill">c++ 软件开发<span class="ver-line">|</span>精通<span class="ver-line">|</span>48</div></dd><dd><div class="professional-skill">VC++ 软件开发&nbsp;&nbsp;串口通信&nbsp;&nbsp;网络编程<span class="ver-line">|</span>熟练<span class="ver-line">|</span>24</div></dd><dd><div class="professional-skill">PB ， PowerScript<span class="ver-line">|</span>精通<span class="ver-line">|</span>18</div></dd><dd><div class="professional-skill">大数据处理，软件性能优化<span class="ver-line">|</span>熟练<span class="ver-line">|</span>18</div></dd><dd><div class="professional-skill">linux<span class="ver-line">|</span>熟练<span class="ver-line">|</span>24</div></dd><dt><h5>兴趣爱好</h5></dt><dd><p>看书&nbsp;&nbsp;陶艺&nbsp;&nbsp;太极&nbsp;&nbsp;羽毛球 网球&nbsp;&nbsp;股票</p></dd></dl><input id="neturlparam" value="AppId=1&amp;Id=133328533&amp;Timestamp=1459870167&amp;Callback=&amp;signature=2E786F74A5BB04EC5DBC5FB70FB10DD9" type="hidden"></div></div></div></div><div id="ajaxLoading" style="display:none;"><img src="%E7%AE%80%E5%8E%86%E4%B8%AD%E5%BF%83_files/ani_ajaxload.gif"></div></body></html>
