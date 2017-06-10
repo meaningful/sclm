@@ -35,6 +35,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MEDIA_URL = '/staticfile/'
+MEDIA_ROOT = os.path.join(BASE_DIR , 'staticfile')
 
 # Application definition
 
