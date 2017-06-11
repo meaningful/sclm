@@ -10,4 +10,44 @@ MEDIA_URL = '/sclm/'
 MEDIA_ROOT = os.path.join(BASE_DIR , '/sclm/')
 
 
+---
+git 操作记录：
+Quick setup — if you’ve done this kind of thing before
+or
+
+We recommend every repository include a README, LICENSE, and .gitignore.
+…or create a new repository on the command line
+
+echo "# test" >> README.md
+  git init
+  git add README.md
+  git commit -m "first commit"
+  git remote add origin https://github.com/meaningful/test.git
+  git push -u origin master
+
+
+…or push an existing repository from the command line
+
+git remote add origin https://github.com/meaningful/test.git
+  git push -u origin master
+
+…or import code from another repository
+
+You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+
+----
+
+Git鼓励大量使用分支：
+
+查看分支：git branch
+
+创建分支：git branch <name>
+
+切换分支：git checkout <name>
+
+创建+切换分支：git checkout -b <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
 
