@@ -1,15 +1,3 @@
-urls.py:
-from django.conf import settings
-from django.conf.urls.static import static
-
-+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-settings.py
-MEDIA_URL = '/sclm/'
-MEDIA_ROOT = os.path.join(BASE_DIR , '/sclm/')
-
-
 ---
 git 操作记录：
 Quick setup — if you’ve done this kind of thing before
@@ -50,4 +38,14 @@ Git鼓励大量使用分支：
 合并某分支到当前分支：git merge <name>
 
 删除分支：git branch -d <name>
+
+---
+
+git remote -v  查看使用的http 还是ssh
+
+重新设置成ssh的方式：
+
+git remote rm origin
+git remote add origin git@github.com:meaningful/sclmKnowagle.git
+git push -u origin master
 
