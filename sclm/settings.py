@@ -69,7 +69,7 @@ ROOT_URLCONF = 'sclm.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["/usr/local/lib/python2.7/dist-packages/filer/templates"],
+        'DIRS': [(os.path.join(BASE_DIR,'mptt')),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -142,6 +142,10 @@ SUIT_CONFIG = {
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 }
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
+STATIC_URL = '/CollectStaticss/'
 STATIC_ROOT = './CollectStaticss/'
-#STATICFILES_DIRS ='./CollectStaticss'
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'admin'),os.path.join(BASE_DIR,'suit'),os.path.join(BASE_DIR,'file'),
+                    os.path.join(BASE_DIR,'cms'),
+                    os.path.join(BASE_DIR,'mptt'),
+                    )

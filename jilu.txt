@@ -50,3 +50,23 @@ git remote add origin git@github.com:meaningful/sclmKnowagle.git
 git push -u origin master
 
 ---
+待实验：
+#这条语句指明静态文件根目录
+STATIC_ROOT = os.path.join(SITE_ROOT,"static")
+
+# URL prefix for static files.
+# Example: "http://media.lawrence.com/static/"
+#这条语句指明所有静态文件的URL前缀，配合URLS.py里面的
+#(r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC_ROOT}),
+#这个定义，就可以把/static/打头的请求转移到静态文件目录里面，在生产应用里面这个功能最好有实际HTTP服务器来取代
+STATIC_URL = '/static/'
+# Additional locations of static files
+#这个语句的作用就是把下面这些目录效果上变成STATIC_ROOT目录的子目录一样的效果。
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(SITE_ROOT,"assets"),
+    os.path.join(SITE_ROOT,"upfiles"),
+
+)
