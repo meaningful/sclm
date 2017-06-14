@@ -134,13 +134,18 @@ THUMBNAIL_HIGH_RESOLUTION = True
 SUIT_CONFIG = {
     'ADMIN_NAME': '三草两木',
     'LIST_PER_PAGE': 20,
-    'MENU': ({'label': u'user', 'app': 'web_sso', 'models': ('web_sso.MyUser', 'auth.Group', 'web_sso.User_ex')},
-             # {'label': u'SQLmannager', 'app': 'web_sso', 'models': ('web_sso.Sql', 'web_sso.PreSql', 'web_sso.Direction')},
-             ),
+    'MENU': (
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
-}
+            # Keep original label and models
+            'sites',
+
+            {'app': 'filer', 'label': 'filer', 'icon':'icon-leaf'},
+#            {'app': 'easy_thumbnails', 'label': 'easy_thumbnails', 'icon':'icon-leaf'},
+            # Rename app and set icon
+ #           {'app': 'auth', 'label': 'Authorization', 'icon':'icon-lock'},
+
+        ),
+  }
 
 #STATIC_URL = '/static/'
 STATIC_URL = '/CollectStaticss/'
@@ -149,3 +154,22 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR,'admin'),os.path.join(BASE_DIR,'suit')
                     os.path.join(BASE_DIR,'cms'),
                     os.path.join(BASE_DIR,'mptt'),
                     )
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': './debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
