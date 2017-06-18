@@ -70,3 +70,32 @@ STATICFILES_DIRS = (
     os.path.join(SITE_ROOT,"upfiles"),
 
 )
+
+---------------------
+最终目标是： 图片文件存储在oss 上， 视频文件存储在youku上
+
+目前使用filer 文件是存储在服务端的MEDIA（staticfile）文件夹上。
+前端访问文件时 ， filer 根据相对url地址翻译一个寻找MEDIA文件的 完整文件地址（url） 。
+
+1. MEDIA 文件夹是如何存储上传到 OSS 上 。
+filer  server 。。。。
+
+2. 前端访问资源文件（图片/视频） 解析出来的地址（url）如何与 oss 生成的文件地址（url ) youku 的视频存储地址（url) 关联起来。
+
+20170617： 19：46
+
+需要确认的事：
+1. oss 是如何存储文件的（ 使用sdk包 如何将文件上传到oss上 ， 如何访问上传至oss的文件）
+2. filer server 是如何部署工作的 。
+
+
+-------
+username : guest_liujie
+
+AccessKeyID：
+LTAIqdhb20Tv47PV
+
+AccessKeySecret：
+TjaUNPbEGO9N6Nvr2r4c58hHa5xDSV
+
+
