@@ -14,7 +14,11 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 将部分的源码路径增加至工程中
+sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -36,7 +40,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 MEDIA_URL = '/staticfile/'
-MEDIA_ROOT = os.path.join(BASE_DIR , 'staticfile')
+#MEDIA_ROOT = os.path.join(BASE_DIR , 'staticfile')
+MEDIA_ROOT = '/home/liujie/mineoss'
 
 # Application definition
 
