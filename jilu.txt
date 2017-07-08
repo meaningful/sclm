@@ -78,24 +78,89 @@ STATICFILES_DIRS = (
 前端访问文件时 ， filer 根据相对url地址翻译一个寻找MEDIA文件的 完整文件地址（url） 。
 
 1. MEDIA 文件夹是如何存储上传到 OSS 上 。
-filer  server 。。。。
-
-2. 前端访问资源文件（图片/视频） 解析出来的地址（url）如何与 oss 生成的文件地址（url ) youku 的视频存储地址（url) 关联起来。
-
-20170617： 19：46
 
 需要确认的事：
 1. oss 是如何存储文件的（ 使用sdk包 如何将文件上传到oss上 ， 如何访问上传至oss的文件）
-2. filer server 是如何部署工作的 。
+
+// 使用 ossfs 工具将oss挂载在ECS上。
+命令： ossfs sclmbucket mineoss -ourl=http://oss-cn-shanghai.aliyuncs.com -o allow_other
+
+2. 前端访问资源文件（图片/视频） 解析出来的地址（url）如何与 oss 生成的文件地址（url ) youku 的视频存储地址（url) 关联起来。
+上一个问题解决 图片的问题已解决
+20170617： 19：46
+
+
+问题： filer server 是如何部署工作的 。　只是一个安全控制　．　
 
 
 -------
-username : guest_liujie
 
-AccessKeyID：
-LTAIqdhb20Tv47PV
+OSS外网域名: sclmbucket.oss-cn-shanghai.aliyuncs.com
+OSS内网域名:　sclmbucket.oss-cn-shanghai-internal.aliyuncs.com
 
-AccessKeySecret：
-TjaUNPbEGO9N6Nvr2r4c58hHa5xDSV
+---
+
+Token AK 创建及授权
+
+您可以使用STS SDK调用AssumeRole接口来获取可以访问OSS的安全令牌：
+
+STS SDK：
+Java .net Python PHP Node.js
+
+
+-------------
+openssl-dev配置　，　/etc/passwd-ossfs : sclmbucket:LTAIqdhb20Tv47PV:TjaUNPbEGO9N6Nvr2r4c58hHa5xDSV
+
+
+
+---
+
+
+	server
+	{
+	    listen       12306;
+	    server_name  sclm
+	    charset UTF-8;
+	    access_log      /var/log/nginx/sclm_access.log;
+	    error_log       /var/log/nginx/sclm_error.log;
+
+	    client_max_body_size 75M;
+	    location / {
+		include uwsgi_params;
+		uwsgi_pass 127.0.0.1:12307;
+		uwsgi_param UWSGI_SCRIPT sclm;
+		uwsgi_param UWSGI_CHDIR /home/liujie/sclm;
+		uwsgi_read_timeout 2;
+	    }
+	    location /static {
+		expires 30d;
+		autoindex on;
+		add_header Cache-Control private;
+		alias /home/liujie/sclm/CollectStaticss/;
+	     }
+	}
+
+
+---
+
+		include  uwsgi_params;
+		uwsgi_pass  127.0.0.1:9090;
+		uwsgi_param UWSGI_SCRIPT sclm.wsgi;
+		uwsgi_param UWSGI_CHDIR /home/liujie/sclm;
+
+---
+在wsgi.py 中增加调试信息：
+def application(environ, start_response):
+    status = '200 OK'
+
+    output = 'sys.path = %s\n' % repr(sys.path)
+    output += 'sys.version = %s\n' % repr(sys.version)
+    output += 'sys.prefix = %s\n' % repr(sys.prefix)
+
+    response_headers = [('Content-type', 'text/plain'),
+                        ('Content-Length', str(len(output)))]
+    start_response(status, response_headers)
+
+    return [output]
 
 
