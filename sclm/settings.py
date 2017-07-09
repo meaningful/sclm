@@ -74,7 +74,7 @@ ROOT_URLCONF = 'sclm.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [(os.path.join(BASE_DIR,'templates')),],
+        'DIRS': [(os.path.join(BASE_DIR,'templates'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,6 +86,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'sclm.wsgi.application'
 
@@ -104,28 +105,6 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-"""
-LANGUAGE_CODE = 'zh-Hans'
-
-TIME_ZONE = 'Asia/Shanghai'
-
-USE_I18N = True
-
-USE_L10N = False
-
-USE_TZ = False
-
-DATETIME_FORMAT ='Y-m-d H:i:s'
-
-DATE_FORMAT = 'Y-m-d'
-
-SUIT_CONFIG = {
-    'ADMIN_NAME':'san cao liang mu ',
-    'LIST_PER_PAGE':10,
-}
-
-"""
-
 LANGUAGE_CODE = 'zh-CN'
 TIME_ZONE = 'Asia/Shanghai'
 USE_I18N = True
@@ -143,28 +122,20 @@ SUIT_CONFIG = {
 
             # Keep original label and models
             'sites',
-
             {'app': 'filer', 'label': 'filer', 'icon':'icon-leaf'},
-#            {'app': 'easy_thumbnails', 'label': 'easy_thumbnails', 'icon':'icon-leaf'},
-            # Rename app and set icon
- #           {'app': 'auth', 'label': 'Authorization', 'icon':'icon-lock'},
 
         ),
   }
 
 STATIC_URL = '/static/'
-#STATIC_URL = '/CollectStaticss/'
-STATIC_ROOT = os.path.join(BASE_DIR,'CollectStaticss')
+STATIC_ROOT = os.path.join(BASE_DIR,'Static')
+'''
 STATICFILES_DIRS = (os.path.join(BASE_DIR,'admin'),os.path.join(BASE_DIR,'suit'),os.path.join(BASE_DIR,'file'),
                     os.path.join(BASE_DIR,'cms'),
                     os.path.join(BASE_DIR,'mptt'),
-                    "os.path.join(BASE_DIR,'CollectStaticss')"
+                    os.path.join(BASE_DIR,'Static'),
                     )
-
-#STATICFILES_FINDERS =(
-#   "django.contrib.staticfiles.finder.FileSystemFinder",
-#    "django.contrib.staticfiles.finder.AppDirectoriesFinder"
-#)
+'''
 
 LOGGING = {
     'version': 1,
