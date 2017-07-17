@@ -18,8 +18,8 @@ import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 将部分的源码路径增加至工程中
-sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
-
+#sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'templates'))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
@@ -39,16 +39,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-MEDIA_URL = '/staticfile/'
-#MEDIA_ROOT = os.path.join(BASE_DIR , 'staticfile')
-MEDIA_ROOT = '/home/liujie/mineoss'
+MEDIA_URL = '/MediaFile/'
+MEDIA_ROOT = os.path.join(BASE_DIR , 'Mediafile')
+#MEDIA_ROOT = '/home/liujie/mineoss'
 
 # Application definition
 
 INSTALLED_APPS = (
+    'filer',
     'suit',
     'easy_thumbnails',
-    'filer',
     'mptt',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog',
     )
 
 MIDDLEWARE_CLASSES = (
@@ -87,6 +88,10 @@ TEMPLATES = [
     },
 ]
 
+TEMPLATE_DIRS = (
+                    os.path.join(os.path.dirname(__file__),'templates'),
+)
+
 
 WSGI_APPLICATION = 'sclm.wsgi.application'
 
@@ -95,10 +100,18 @@ WSGI_APPLICATION = 'sclm.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+ #   'default': {
+ #       'ENGINE': 'django.db.backends.sqlite3',
+ #       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+  #  }
+	 'default':{
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': "sclm",
+        'USER': 'root',
+        'PASSWORD': 'liujie',
+        'HOST': '127.0.0.1',
+}
+
 }
 
 
